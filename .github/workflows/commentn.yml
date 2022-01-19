@@ -9,8 +9,13 @@ jobs:
     steps:
       - run: |
           echo  '${{ toJSON(github.event.issue) }}'
-          gh issue comment $ISSUE --body "Thank you for opening this issue! Your branch is "
+          BRANCH_NAME="$NUMBER-$(echo $TITLE | sed 's/ /-/g;s/[A-Z]/\L\0/g;s/[^a-z0-9\-]//g;s/--*/-/g')"
+          git checkout -b "$BRANCH_NAME" origin/master
+          git push origin HEAD
+          gh issue comment $ISSUE --body "Thank you for opening this issue! Your branch is [$BRANCH_NAME](https://github.com/Zebreus/toenhtashneota/tree/$BRANCH_NAME)"
           export
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.html_url }}
+          TITLE: ${{ github.event.issue.title }}
+          NUMBER: ${{ github.event.issue.number }}

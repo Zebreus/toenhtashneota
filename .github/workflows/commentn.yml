@@ -16,7 +16,7 @@ jobs:
           git checkout -b "$BRANCH_NAME" origin/master
           git commit -m "Created branch for issue $TITLE" --allow-empty
           git push origin HEAD
-          gh pr create --draft -H "$BRANCH_NAME" -t "$TITLE" -b "resolves #$NUMBER"
+          gh pr create --draft -H "$BRANCH_NAME" -t "$TITLE" -b "bodybody \n resolves #$NUMBER"
           gh issue comment $ISSUE --body "Thank you for opening this issue! Your branch is [$BRANCH_NAME](https://github.com/Zebreus/toenhtashneota/tree/$BRANCH_NAME).    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Zebreus/toenhtashneota/tree/$BRANCH_NAME)"
           export
         env:

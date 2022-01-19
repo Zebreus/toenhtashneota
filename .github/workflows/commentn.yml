@@ -13,7 +13,7 @@ jobs:
           BRANCH_NAME="$NUMBER-$(echo $TITLE | sed 's/ /-/g;s/[A-Z]/\L\0/g;s/[^a-z0-9\-]//g;s/--*/-/g')"
           git checkout -b "$BRANCH_NAME" origin/master
           git push origin HEAD
-          gh issue comment $ISSUE --body "Thank you for opening this issue! Your branch is [$BRANCH_NAME](https://github.com/Zebreus/toenhtashneota/tree/$BRANCH_NAME)"
+          gh issue comment $ISSUE --body "Thank you for opening this issue! Your branch is [$BRANCH_NAME](https://github.com/Zebreus/toenhtashneota/tree/$BRANCH_NAME).    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Zebreus/toenhtashneota/tree/$BRANCH_NAME)"
           export
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

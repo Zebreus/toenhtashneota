@@ -7,6 +7,7 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: |
           echo  '${{ toJSON(github.event.issue) }}'
           BRANCH_NAME="$NUMBER-$(echo $TITLE | sed 's/ /-/g;s/[A-Z]/\L\0/g;s/[^a-z0-9\-]//g;s/--*/-/g')"
